@@ -1,0 +1,253 @@
+6
+80
+0 Rep. Dem. do Congo
+1 Espanha
+2 Holanda
+3 Uzbequistao
+4 Africa do Sul
+5 Servia
+6 Egito
+7 Jordania
+8 Catar
+9 Sri Lanka
+10 Oman
+11 Bolivia
+12 Austria
+13 Bielorussia
+14 Etiopia
+15 Algeria
+16 Gana
+17 Libano
+18 Rep. Tcheca
+19 Cazaquistao
+20 Hungria
+21 China
+22 Iemem
+23 Suica
+24 Madagascar 
+25 Quenia
+26 Paquistao
+27 Azerbaijao
+28 Franca
+29 Botswana 
+30 Kuwait 
+31 Senegal 
+32 Polonia
+33 Eslovaquia
+34 Nepal
+35 Siria
+36 Venezuela
+37 Nigeria
+38 Finlandia
+39 Filipinas
+40 India
+41 Moçambique 
+42 Tunisia 
+43 Uganda 
+44 Turcomenistao
+45 Luxemburgo
+46 Afeganistao
+47 Russia
+48 Angola 
+49 Reino Unido
+50 Chipre
+51 Italia
+52 Grecia
+53 Costa do Marfim 
+54 Zambia 
+55 Myanmar
+56 Mongolia
+57 Georgia
+58 Marrocos 
+59 Tanzania 
+60 Brasil        
+61 Argentina
+62 Bangladesh
+63 Canada
+64 Indonesia
+65 Israel
+66 Malasia
+67 Mexico
+68 Peru
+69 Portugal
+70 Arabia Saudita
+71 Vietna
+72 Suecia
+73 Tailandia
+74 Emirados Arabes
+75 Turquia
+76 Namibia 
+77 Sudao 
+78 Dinamarca
+79 Irlanda
+170
+4 15 10
+4 48 10
+4 29 0
+4 0 10
+4 53 10
+4 24 10
+4 58 10
+4 41 10
+4 31 10
+4 42 10
+4 43 10
+4 59 10
+4 54 10
+4 76 0
+4 77 10
+15 4 10
+48 4 0
+29 4 0
+0 4 35
+53 4 10
+24 4 10
+58 4 2.5
+41 4 2.5
+31 4 10
+42 4 0
+43 4 0
+59 4 10
+54 4 0
+76 4 0
+77 4 3
+21 12 9
+21 18 9
+21 38 9
+21 28 9
+21 20 9
+21 45 9
+21 2 9
+21 32 9
+21 33 9
+21 49 9
+21 78 9
+21 79 9
+21 51 9
+21 1 9
+21 23 9
+12 21 3.2
+18 21 3.2
+38 21 3.2
+28 21 3.2
+20 21 3.2
+45 21 3.2
+2 21 3.2
+32 21 3.2
+33 21 3.2
+49 21 2
+78 21 3.2
+79 21 3.2
+51 21 3.2
+1 21 3.2
+23 21 0
+40 46 20
+40 11 20
+40 55 20
+40 7 20
+40 25 20
+40 10 20
+40 34 20
+40 37 20
+40 39 20
+40 8 20
+40 9 20
+40 14 20
+40 16 20
+40 17 20
+40 22 20
+46 40 1
+11 40 10
+55 40 15
+7 40 0
+25 40 0
+10 40 5
+34 40 10
+37 40 10
+39 40 7
+8 40 5
+9 40 35.04
+14 40 5
+16 40 10
+17 40 0
+22 40 5
+60 61 10
+60 62 10
+60 63 10
+60 64 10
+60 65 10
+60 66 10
+60 67 10
+60 68 10
+60 69 10
+60 70 10
+60 71 10
+60 72 10
+60 73 10
+60 74 10
+60 75 10
+61 60 10
+62 60 0
+63 60 13
+64 60 5
+65 60 0
+66 60 10
+67 60 5
+68 60 0
+69 60 3.2
+70 60 5
+71 60 5
+72 60 3.2
+73 60 146
+74 60 5
+75 60 0
+47 27 13
+47 13 13
+47 50 13
+47 52 13
+47 19 0
+47 57 13
+47 30 13
+47 56 13
+47 26 13
+47 5  13
+47 35 13
+47 44 13
+47 6  13
+47 3  13
+47 36 13
+27 47 0
+13 47 0
+50 47 
+52 47 
+19 47 0
+57 47 0
+30 47 5
+56 47 5
+26 47 4.89
+5 47 3
+35 47 5
+44 47 10
+6 47 0
+3 47 10
+36 47 40
+60 21 9
+60 40 20
+60 47 13
+60 4 10
+21 60 10
+21 4 10
+21 47 13
+21 40 20
+47 4 10
+47 40 20
+47 60 10
+47 21 9
+4 21 9
+4 60 10
+4 47 13
+4 40 20
+40 60 10
+40 21 9
+40 47 13
+40 4 10
