@@ -158,6 +158,113 @@ def switch(numeroMenu):
             grafo.imprimirArquivoLegivel(arquivo)
         except Exception as e:
             print(f"Ocorreu um erro ao exibir o arquivo: {e}")
+
+    elif numeroMenu == 16:
+        if grafo.n == 0:
+            print("Grafo vazio. Use a opção 1 para carregar um arquivo primeiro.")
+            return
+
+        print("\n=== Aplicando técnicas ao problema de Rotas Comerciais ===")
+
+        origem = input("Informe o país de ORIGEM para o caminho mínimo: ")
+        destino = input("Informe o país de DESTINO para o caminho mínimo: ")
+
+        try:
+            distancias, predecessores = grafo.dijkstra(origem)
+            if destino not in distancias or distancias[destino] == grafo.INF:
+                print(f"\n[Técnica 1 - Dijkstra] Não existe rota de {origem} para {destino}.")
+            else:
+                caminho = []
+                atual = destino
+                while atual is not None:
+                    caminho.append(atual)
+                    atual = predecessores[atual]
+                caminho.reverse()
+                print("\n[Técnica 1 - Caminho mínimo (Dijkstra)]")
+                print("Rota:", " -> ".join(caminho))
+                print(f"Custo total da rota: {distancias[destino]}")
+        except Exception as e:
+            print(f"Erro ao executar Dijkstra: {e}")
+
+        try:
+            custo, mst = grafo.prim()
+            print("\n[Técnica 2 - Árvore Geradora Mínima (Prim)]")
+            if custo == 0 or not mst:
+                print("O grafo não é conexo; não foi possível gerar uma AGM única.")
+            else:
+                print(f"Custo total da AGM: {custo}")
+                for u, v, peso in mst:
+                    print(f"{u} -> {v} (peso {peso})")
+        except Exception as e:
+            print(f"Erro ao aplicar Prim: {e}")
+
+        try:
+            print("\n[Técnica 3 - Centralidade de Proximidade]")
+            cent = grafo.centralidade_proximidade()
+            ordenado = sorted(cent.items(), key=lambda x: x[1], reverse=True)
+            print("Países mais centrais (hubs comerciais):")
+            for nome, valor in ordenado[:3]:
+                print(f"{nome}: {valor:.3f}")
+        except Exception as e:
+            print(f"Erro ao calcular centralidade de proximidade: {e}")
+
+        try:
+            print("\n[Técnica 4 - Blocos de comércio (SCC)]")
+            comp_id, comps = grafo.scc()
+            if not comps:
+                print("Nenhuma componente encontrada (grafo vazio?).")
+            else:
+                for i, comp in enumerate(comps):
+                    nomes = [grafo.indices[idx] for idx in comp]
+                    print(f"Bloco {i}: {', '.join(nomes)}")
+        except Exception as e:
+            print(f"Erro ao calcular componentes fortemente conexas: {e}")
+
+    elif numeroMenu == 17:
+        if grafo.n == 0:
+            print("Grafo vazio. Use a opção 1 para carregar um arquivo primeiro.")
+            return
+
+        print("\n=== Descobrindo características do grafo de Rotas Comerciais ===")
+
+        print("\n[Característica 1 - Graus dos vértices]")
+        grafo.listarGraus()
+
+        print("\n[Característica 2 - Fontes e Sorvedouros]")
+        fontes = []
+        sorvedouros = []
+        for nome in grafo.nomes:
+            try:
+                if grafo.isSource(nome):
+                    fontes.append(nome)
+                if grafo.isSorvedouro(nome):
+                    sorvedouros.append(nome)
+            except ValueError:
+                pass
+
+        print("Países que apenas exportam (fontes):", ", ".join(fontes) if fontes else "nenhum.")
+        print("Países que apenas importam (sorvedouros):", ", ".join(sorvedouros) if sorvedouros else "nenhum.")
+
+        print("\n[Característica 3 - Conectividade e Caminho Euleriano]")
+        cat = grafo.categoriaConexidade()
+        desc = {
+            3: "C3 (fortemente conexo)",
+            2: "C2 (unilateral)",
+            1: "C1 (fracamente conexo)",
+            0: "C0 (desconexo)"
+        }.get(cat, "Categoria desconhecida")
+        print(f"Conectividade do grafo direcionado: {desc}")
+
+        if grafo.hConexidade():
+            print("O grafo é h-conexo.")
+        else:
+            print("O grafo não é h-conexo.")
+
+        if grafo.caminhoEuleriano():
+            print("O grafo possui caminho euleriano.")
+        else:
+            print("O grafo NÃO possui caminho euleriano.")
+
             
     elif numeroMenu == -1:
         print("Programa encerrado.")
@@ -183,6 +290,8 @@ def mostrarOpcoes():
     Digite 13 para saber se o grafo possui caminho Euleriano;
     Digite 14 para visualizar o Grafo plotado;
     Digite 15 para Mostrar o conteúdo do arquivo (legível);
+    Digite 16 para Aplicar técnicas ao problema de Rotas Comerciais;
+    Digite 17 para Descobrir características do grafo de Rotas Comerciais;
     Digite -1 para Encerrar a aplicação.
     """)
 

@@ -514,15 +514,14 @@ class GrafoMatriz:
         if not self.rotulado:
             raise ValueError("O algoritmo de Dijkstra requer grafos rotulados com pesos.")
 
-        # lista de vértices válidos
-        validos = [i for i, nome in self.nomes.items() if nome is not None]
+        # lista de vértices válidos (índices)
+        validos = [indice for nome, indice in self.nomes.items() if indice is not None]
 
-        # traduz origem
+        # traduz origem (string -> índice)
         if isinstance(origem, str):
-            rev = {v: k for k, v in self.nomes.items() if v is not None}
-            if origem not in rev:
+            if origem not in self.nomes:
                 raise ValueError(f"Vértice '{origem}' não existe.")
-            src = rev[origem]
+            src = self.nomes[origem]
         else:
             src = origem
             if src not in validos:
@@ -548,9 +547,12 @@ class GrafoMatriz:
                         d[v] = nova_dist
                         pred[v] = u
 
-        # mapeia resultados para nomes
-        distancias = {self.nomes[i]: d[i] for i in validos}
-        predecessores = {self.nomes[i]: (self.nomes[pred[i]] if pred[i] is not None else None) for i in validos}
+        # mapeia resultados para nomes (índice -> nome)
+        distancias = {self.indices[i]: d[i] for i in validos}
+        predecessores = {
+            self.indices[i]: (self.indices[pred[i]] if pred[i] is not None else None)
+            for i in validos
+        }
 
         return distancias, predecessores
     
@@ -698,6 +700,29 @@ class GrafoMatriz:
         for nome in self.nomes:
             grau = self.degree(nome)
             print(f"Vértice: {nome}, Grau: {grau}")
+
+        def centralidade_proximidade(self):
+            """
+            Calcula a centralidade de proximidade para cada vértice,
+            interpretando os pesos das arestas como custo/distância comercial.
+            Retorna um dicionário {nome: valor}.
+            """
+        if not self.rotulado:
+            raise ValueError("Centralidade de proximidade exige grafo com pesos nas arestas.")
+        if self.n == 0:
+            return {}
+
+        resultados = {}
+        for nome in self.nomes:
+            distancias, _ = self.dijkstra(nome)
+            # ignora distância infinita e distância 0 (para ele mesmo)
+            finitas = [d for d in distancias.values() if d != self.INF and d > 0]
+            if len(finitas) == 0:
+                resultados[nome] = 0.0
+            else:
+                # definição simples: número de vértices alcançados / soma das distâncias
+                resultados[nome] = len(finitas) / sum(finitas)
+        return resultados
 
     def scc(self):
         """Retorna (comp_id, componentes) via Kosaraju.
